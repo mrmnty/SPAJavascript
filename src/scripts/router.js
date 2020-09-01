@@ -57,17 +57,20 @@ Router.prototype = {
                             data.forEach(product => {
                                 document.getElementById("product-conatiner").innerHTML +=
                                 `<div class="col-12 col-lg-4 col-md-6 mb-4">
-                                <div class="card h-100">
+                                <div class="card product-card">
                                   <a href="#"><img class="card-img-top" src="${product.image}" alt=""></a>
-                                  <div class="card-body">
+                                  <div class="card-body padding0">
                                     <h4 class="card-title">
-                                      <a href="#productDescription">${product.title}</a>
+                                      <a href="#productDescription" class="product-title">${product.title}</a>
                                     </h4>
-                                    <h5>${product.price}</h5>
-                                    <p class="card-text">${product.category}</p>
+                                    <div>
+                                        <p class="card-text float-left">${product.category}</p>
+                                        <p class="float-right">${product.price}</p>
+                                    </div>
                                   </div>
-                                  <div class="card-footer">
-                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                  <div class="card-footer star-ratings padding0">
+                                    <small class="text-muted float-left">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                    <span class="float-right cart-icon"><i class="fa fa-shopping-cart"></i></span>
                                   </div>
                                 </div>
                               </div>`

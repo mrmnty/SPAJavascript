@@ -1,12 +1,66 @@
-$base-font-size: 16px;
-$heading-font-size: 20px;
+@import "./partials/helpers";
 
+
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return #{$remSize}rem;
+  }
+
+  @mixin fontSize($size) {
+    font-size: $size; //Fallback in px
+    font-size: calculateRem($size);
+  }
+  
 body  {
-    font-size: $heading-font-size;
+    font-size: $base-font-size;
+}
+
+.product-description-card {
+    @extend .no-border;
+    height: 100%;
+    padding: 69px; 
 }
 
 .product-card {
-    border:0;
-    height: 100%;
-    padding: 69px; 
+    @extend .no-border; 
+}
+
+.product-title {
+    color: $blackcolor; 
+    @include fontSize(18px);
+}
+
+.star-ratings {
+    @extend .no-border; 
+    background-color: unset;
+    .cart-icon {
+        @include fontSize(18px);
+    }
+}
+
+// Carousal Styles
+
+.carousel-control-prev-icon {
+	height: 100px;
+	width: 100px;
+	outline: $blackcolor;
+	background-size: 100%, 100%;
+	background-image: none;
+	&:after {
+		content: '<';
+		font-size: 55px;
+		color: $redcolor;
+	}
+}
+.carousel-control-next-icon {
+	height: 100px;
+	width: 100px;
+	outline: $blackcolor;
+	background-size: 100%, 100%;
+	background-image: none;
+	&:after {
+		content: '>';
+		font-size: 55px;
+		color: $redcolor;
+	}
 }
