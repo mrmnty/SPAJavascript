@@ -1,0 +1,25 @@
+{
+  "name": "spajavascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:sass": "node-sass --watch src/scss -o src/css/style"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrmnty/SPAJavascript.git"
+  },
+  "author": "Amit Mohanty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrmnty/SPAJavascript/issues"
+  },
+  "homepage": "https://github.com/mrmnty/SPAJavascript#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "express": "^4.17.1",
+    "node-sass": "^4.14.1"
+  }
+}

@@ -1,0 +1,12 @@
+$base-font-size: 16px;
+$heading-font-size: 20px;
+
+body  {
+    font-size: $heading-font-size;
+}
+
+.product-card {
+    border:0;
+    height: 100%;
+    padding: 69px;
+}
