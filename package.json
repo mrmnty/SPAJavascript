@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile:sass": "node-sass --watch src/scss -o src/css/style"
+    "compile:sass": "node-sass --watch src/scss -o src/css/style",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

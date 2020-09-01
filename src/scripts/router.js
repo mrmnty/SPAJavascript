@@ -20,26 +20,25 @@ Router.prototype = {
         this.rootElem = document.getElementById('app');
     },
     init: function () {
-        var r = this.routes;
-        (function(scope, r) { 
+        var routeArray = this.routes;
+        (function(scope, routeArray) { 
             window.addEventListener('hashchange', function (e) {
-                scope.hasChanged(scope, r);
+                scope.hasChanged(scope, routeArray);
             });
-        })(this, r);
-        this.hasChanged(this, r);
+        })(this, routeArray);
+        this.hasChanged(this, routeArray);
     },
-    hasChanged: function(scope, r){
+    hasChanged: function(scope, routeArray){
         if (window.location.hash.length > 0) {
-            for (var i = 0, length = r.length; i < length; i++) {
-                var route = r[i];
-                console.log(window.location.hash);
+            for (var i = 0, length = routeArray.length; i < length; i++) {
+                var route = routeArray[i];
                 if(route.isActiveRoute(window.location.hash.substr(1))) {
                     scope.goToRoute(route.htmlName);
                 }
             }
         } else {
-            for (var i = 0, length = r.length; i < length; i++) {
-                var route = r[i];
+            for (var i = 0, length = routeArray.length; i < length; i++) {
+                var route = routeArray[i];
                 if(route.default) {
                     scope.goToRoute(route.htmlName);
                 }
@@ -53,6 +52,28 @@ Router.prototype = {
             xhttp.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
                     scope.rootElem.innerHTML = this.responseText;
+                    if(htmlName === 'home.html') {
+                        fetch("./model/products.json").then(r=>r.json()).then(data => {
+                            data.forEach(product => {
+                                document.getElementById("product-conatiner").innerHTML +=
+                                `<div class="col-12 col-lg-4 col-md-6 mb-4">
+                                <div class="card h-100">
+                                  <a href="#"><img class="card-img-top" src="${product.image}" alt=""></a>
+                                  <div class="card-body">
+                                    <h4 class="card-title">
+                                      <a href="#productDescription">${product.title}</a>
+                                    </h4>
+                                    <h5>${product.price}</h5>
+                                    <p class="card-text">${product.category}</p>
+                                  </div>
+                                  <div class="card-footer">
+                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                  </div>
+                                </div>
+                              </div>`
+                            });
+                        });
+                    }  
                 }
             };
             xhttp.open('GET', url, true);
